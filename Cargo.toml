@@ -18,30 +18,30 @@ debug_lines = []
 rapier = ["bevy_rapier3d"]
 
 [dependencies]
-bevy = { version = "0.11", default-features = false, features = [
+bevy = { version = "0.12", default-features = false, features = [
     "bevy_render",
     "bevy_gizmos",
 ] }
-bevy_rapier3d = { version = "0.22", default-features = false, features = [
+bevy_rapier3d = { git = "https://github.com/devil-ira/bevy_rapier.git", branch = "bevy-0.12", default-features = false, features = [
     "async-collider",
     "dim3",
 ], optional = true }
 
 [dev-dependencies]
-bevy = "0.11"
+bevy = "0.12"
 aether_spyglass = "0.2"
-bevy-inspector-egui = "0.19"
+bevy-inspector-egui = "0.21"
 bevy_framepace = "0.13"
-bevy_rapier3d = { version = "0.22", features = ["debug-render"] }
+bevy_rapier3d = { git = "https://github.com/devil-ira/bevy_rapier.git", branch = "bevy-0.12", features = ["debug-render"] }
 
 # Enable a small amount of optimization in debug mode
-[profile.dev]
-opt-level = 1
+#[profile.dev]
+#opt-level = 1
 
 # Enable high optimizations for dependencies (incl. Bevy), but not for our code:
 [profile.dev.package."*"]
 opt-level = 3
 
-[patch.crates-io]
+#[patch.crates-io]
 #bevy_rapier3d = { path = "../bevy_rapier/bevy_rapier3d" }
-bevy_rapier3d = { git = "https://github.com/dimforge/bevy_rapier", rev = "0ea000b" }
+#bevy_rapier3d = { git = "https://github.com/dimforge/bevy_rapier", rev = "0ea000b" }

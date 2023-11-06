@@ -1,12 +1,16 @@
 use crate::controller::*;
-use bevy::{ecs::schedule::ScheduleLabel, prelude::*, utils::HashSet};
+use bevy::{
+    ecs::schedule::ScheduleLabel,
+    prelude::*,
+    utils::{intern::Interned, HashSet},
+};
 use bevy_rapier3d::prelude::*;
 
 /// The [character controller](CharacterController) plugin. Necessary to have the character controller
 /// work.
 pub struct WanderlustPlugin {
     tweaks: bool,
-    schedule: Box<dyn ScheduleLabel>,
+    schedule: Interned<dyn ScheduleLabel>,
     default_system_setup: bool,
 }
 
@@ -33,7 +37,7 @@ impl WanderlustPlugin {
 
     /// Adds the controller systems to the provided schedule rather than `Update`.
     pub fn in_schedule(mut self, schedule: impl ScheduleLabel) -> Self {
-        self.schedule = Box::new(schedule);
+        self.schedule = schedule.intern();
         self
     }
 }
@@ -42,7 +46,7 @@ impl Default for WanderlustPlugin {
     fn default() -> Self {
         Self {
             tweaks: true,
-            schedule: Box::new(PostUpdate),
+            schedule: PostUpdate.intern(),
             default_system_setup: true,
         }
     }
@@ -82,7 +86,7 @@ impl Plugin for WanderlustPlugin {
 
         if self.default_system_setup {
             app.add_systems(
-                self.schedule.clone(),
+                self.schedule.intern(),
                 (
                     crate::get_mass_from_rapier,
                     crate::get_velocity_from_rapier,
