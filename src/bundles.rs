@@ -25,7 +25,7 @@ pub struct ControllerBundle {
     /// See [`InheritedVisibility`]
     pub inherited_visibility: InheritedVisibility,
     /// See [`ViewVisibility`]
-    view_visibility: ViewVisibility,
+    pub view_visibility: ViewVisibility,
 }
 
 impl Default for ControllerBundle {
