@@ -34,7 +34,7 @@ fn main() {
             // it's working again
             // RapierDebugRenderPlugin::default(),
             WanderlustPlugin::default(),
-            aether_spyglass::SpyglassPlugin,
+            // aether_spyglass::SpyglassPlugin,
             FramepacePlugin,
         ))
         .insert_resource(RapierConfiguration {

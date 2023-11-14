@@ -29,9 +29,9 @@ bevy_rapier3d = { git = "https://github.com/devil-ira/bevy_rapier.git", branch =
 
 [dev-dependencies]
 bevy = "0.12"
-aether_spyglass = "0.2"
+# aether_spyglass = "0.2"
 bevy-inspector-egui = "0.21"
-bevy_framepace = "0.13"
+bevy_framepace = "0.14"
 bevy_rapier3d = { git = "https://github.com/devil-ira/bevy_rapier.git", branch = "bevy-0.12", features = ["debug-render"] }
 
 # Enable a small amount of optimization in debug mode
